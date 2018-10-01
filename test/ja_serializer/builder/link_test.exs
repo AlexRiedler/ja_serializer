@@ -14,7 +14,7 @@ defmodule JaSerializer.Builder.LinkTest do
 
     has_many :comments,
       serializer: JaSerializer.Builder.LinkTest.CommentSerializer,
-      link: "articles/:id/comments"
+      link: "articles/:id/comments#all"
   end
 
   defmodule CommentSerializer do
@@ -48,6 +48,6 @@ defmodule JaSerializer.Builder.LinkTest do
       relationships: [%JaSerializer.Builder.Relationship{:links => [%JaSerializer.Builder.Link{href: href}]}]
     } = primary_resource
 
-    assert href == "articles/a1/comments"
+    assert href == "articles/a1/comments#all"
   end
 end
